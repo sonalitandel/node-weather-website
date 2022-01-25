@@ -1,6 +1,5 @@
 const express=require('express')
 const path=require('path')
-const app=express()
 const hbs=require('hbs')
 const geoCodecls=require('../utils/geocode.js')
 const forecastCls=require('../utils/forecast.js')
@@ -10,6 +9,9 @@ const forecastCls=require('../utils/forecast.js')
 const publicDirLocation=path.join(__dirname,'../public')
 const templateLocation=path.join(__dirname,'../templates/views')
 const partialsPath=path.join(__dirname,'../templates/partials')
+
+const app=express()
+const port=process.env.PORT || 3000
 
 // Set up handlebars and view location
 app.set('view engine', 'hbs');
@@ -66,6 +68,6 @@ app.get('/products',(req,res)=>{
 //     })
 // })
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
     console.log('server listening to port 3000')
 })
